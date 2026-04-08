@@ -28,7 +28,7 @@ def get_pragma(x, table):
 
 def get_pragmas(x):
     ret = []
-    get_tables()
+    get_tables(x)
     for table in x.fetchall():
         r1 = []
         table = table[0]
