@@ -7,7 +7,6 @@ import sys, argparse
 
 load_dotenv()
 
-
 BASE_DIR = os.getenv("BASE_DIR")
 BASE_DIR = Path(BASE_DIR).resolve()
 DB_NAME = "recent_capitol_final.db"

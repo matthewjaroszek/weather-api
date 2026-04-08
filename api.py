@@ -1,7 +1,10 @@
 from config import *
 
-if len(sys.argv) >= 2 and sys.argv[1] == True: DEBUG = True
-else: DEBUG = False
+if len(sys.argv) >= 2 and (int)(sys.argv[1]) == 1: DEBUG = False
+else: DEBUG = True
+
+print(DEBUG)
+
 app = Flask('APP')
 
 @app.route('/api/help')
