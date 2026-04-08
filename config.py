@@ -37,3 +37,6 @@ def get_pragmas(x):
             r1.append(col[1])
         ret.append(r1)
     return ret
+
+def ret(entry):
+    return ('\n'.join(entry))

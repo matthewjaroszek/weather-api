@@ -7,7 +7,7 @@ def help_api():
     routes = []
     for rule in app.url_map.iter_rules():
         routes.append(str(rule))
-    return jsonify(routes)
+    return ret(routes)
 
 @app.route('/api/sql/<path:cmd>')
 def execute(cmd):
