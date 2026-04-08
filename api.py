@@ -33,7 +33,7 @@ def schema():
 @app.route('/api/countries')
 def countries():
     x, conn = connect()
-    x.execute(f'SELECT country FROM locations order by country')
+    x.execute(f'SELECT country, location_name FROM locations order by country')
     query = x.fetchall()
     conn.close()
     return query
