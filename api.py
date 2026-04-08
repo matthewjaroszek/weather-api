@@ -18,6 +18,15 @@ def execute(cmd):
     conn.close()
     return ret(query)
 
+@app.route('/api/sql')
+def execute():
+    cmd = request.args.get("cmd")
+    x, conn = connect()
+    x.execute(cmd)
+    query = x.fetchall()
+    conn.close()
+    return ret(query)
+
 @app.route('/api/health')
 def health():
     return "status ok"
@@ -46,4 +55,4 @@ def locations(country):
     return ret(query)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug = True)
+    app.run(host='0.0.0.0', port=5001, debug = False)
