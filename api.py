@@ -33,8 +33,7 @@ def schema():
 def countries():
     x, conn = connect()
     x.execute(f'SELECT country FROM locations')
-    rows = x.fetchall()
-    ret = [row[0] for row in rows]
+    ret = x.fetchall()
     conn.close()
     return ret
 
@@ -43,7 +42,6 @@ def locations(country):
     x, conn = connect()
     x.execute(f'SELECT location_name FROM locations WHERE country = "{countries}"')
     ret = x.fetchall()
-    ret = [row[0] for row in rows]
     conn.close()
     return ret
 
