@@ -7,12 +7,12 @@ import shutil
 load_dotenv()
 
 BASE_DIR = os.getenv("BASE_DIR")
+PORT = os.getenv("PORT")
 BASE_DIR = Path(BASE_DIR).resolve()
 DB_NAME = "recent_capitol_final.db"
 DB_PATH = BASE_DIR / DB_NAME
 DB_SOURCE = BASE_DIR / 'source.db'
 HOST = "0.0.0.0"
-PORT = 5000
 APP = 'weather-api'
 
 shutil.copy(DB_SOURCE, DB_PATH)
