@@ -9,7 +9,7 @@ app = Flask('APP')
 
 @app.route('/api/argv')
 def argv():
-    return jsonify({len(sys.argv): sys.argv[0]})
+    return jsonify({len(sys.argv): sys.argv[1]})
 
 @app.route('/api/help')
 def help():
