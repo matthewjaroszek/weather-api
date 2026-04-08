@@ -38,5 +38,32 @@ def get_pragmas(x):
         ret.append(r1)
     return ret
 
-def ret(entry):
-    return ('\n'.join(entry))
+def ret(data):
+    
+    # String
+    if isinstance(data, str):
+        return data
+    
+    # 1D list/tuple
+    if isinstance(data, (list, tuple)) and not isinstance(data, (dict, set)):
+        return '\n'.join(map(str, data))
+    
+    # 2D list/tuple
+    if isinstance(data, (list, tuple)):
+        rows = []
+        for row in data:
+            if isinstance(row, (list, tuple)):
+                rows.append(' '.join(map(str, row)))
+            else:
+                rows.append(str(row))
+        return '\n'.join(rows)
+    
+    # Dict
+    if isinstance(data, dict):
+        items = []
+        for k, v in data.items():
+            items.append(f"{k}: {v}")
+        return '\n'.join(items)
+    
+    # Anything else
+    return str(data)
