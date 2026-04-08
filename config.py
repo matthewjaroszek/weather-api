@@ -3,11 +3,21 @@ import sqlite3 as sql
 from flask import Flask, jsonify, request
 from pathlib import Path
 
-sql_url = os.getenv('sql_url')
-db = 'recent_capitol_final.db'
+BASE_DIR = Path('/Users/matthewjaroszek/weather-api').resolve()
+DB_NAME = "recent_capitol_final.db"
+DB_PATH = BASE_DIR / DB_NAME
+HOST = "0.0.0.0"
+PORT = 5000
+DEBUG = True
+APP = 'weather-api'
 
-def connect_sqlite(file_name):
-    conn = sql.connect(f'dbs/{file_name}.db')
-    x = conn.cursor()
-    return x, conn
+conn = sql.connect(DB_PATH)
+x = conn.cursor()
+    
+def get_tables():
+    x.execute(f'SELECT name FROM sqlite_master WHERE type=\'table\' AND name NOT LIKE \'sqlite_%\'')
+
+
+
+
 

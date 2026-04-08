@@ -1,7 +1,6 @@
 from config import *
 
-app = Flask('weather-api')
-DB_PATH = os.path.join(os.path.dirname('recent_capitol_final.db'), '')
+app = Flask('APP')
 
 @app.route('/api/health')
 def health():
