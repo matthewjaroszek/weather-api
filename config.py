@@ -32,7 +32,7 @@ def get_pragmas(x):
     for table in x.fetchall():
         r1 = []
         table = table[0]
-        r1.append(f'{table}')
+        r1.append(f'Table Name: {table}')
         get_pragma(x, table)
         z = x.fetchall()
         for col in z:
