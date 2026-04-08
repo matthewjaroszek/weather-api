@@ -4,12 +4,12 @@ app = Flask('APP')
 
 @app.route('/api/help')
 def help():
-    return jsonify(['/api/health', '/api/countries', '/api/schema', '/api/<country>/locations'])
+    return jsonify(['/api/health', '/api/countries', '/api/schema', '/api/<country>/locations', '/api/sql/cmd - use %20 instead of spaces'])
 
-@app.route('/api/sql/<cmd>')
-def execute(cmds):
+@app.route('/api/sql/<path:cmd>')
+def execute(cmd):
     x, conn = connect()
-    x.execute(cmds)
+    x.execute(cmd)
     return jsonify(x.fetchall())
 
 @app.route('/api/health')
