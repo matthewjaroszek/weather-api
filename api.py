@@ -1,6 +1,6 @@
 from config import *
 
-if len(sys.argv >= 2 and sys.argv[1] == True): DEBUG = True
+if len(sys.argv) >= 2 and sys.argv[1] == True: DEBUG = True
 else: DEBUG = False
 app = Flask('APP')
 
