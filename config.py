@@ -41,3 +41,34 @@ def get_pragmas(x):
             r1.append(col[1])
         ret.append(r1)
     return ret
+
+def ret(data, top_level=True, pre_wrap=True):
+    if pre_wrap:
+        return f"<pre>{ret(data, top_level, False)}</pre>"
+    
+    if isinstance(data, str):
+        return data
+
+    if not isinstance(data, (list, tuple)):
+        return str(data)
+
+    lines = []
+
+    for i, item in enumerate(data):
+        if isinstance(item, (list, tuple)) and len(item) == 1:
+            item = item[0]
+
+        if isinstance(item, (list, tuple)):
+            lines.append(ret(item, top_level=False, pre_wrap=False))
+        else:
+            lines.append(str(item))
+
+        if top_level and i < len(data) - 1:
+            next_item = data[i + 1]
+            if isinstance(next_item, (list, tuple)) and len(next_item) == 1:
+                next_item = next_item[0]
+
+            if isinstance(item, (list, tuple)) or isinstance(next_item, (list, tuple)):
+                lines.append("")
+
+    return "\n".join(lines)
