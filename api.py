@@ -1,10 +1,5 @@
 from config import *
 
-if len(sys.argv) >= 2 and (int)(sys.argv[1]) == 1: DEBUG = False
-else: DEBUG = True
-
-print(DEBUG)
-
 app = Flask('APP')
 
 @app.route('/api/argv')
@@ -53,4 +48,6 @@ def locations(country):
     return jsonify(locations)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    if len(sys.argv) >= 2 and (int)(sys.argv[1]) == 1: DEBUG = False
+    else: DEBUG = True
+    app.run(host='0.0.0.0', port=5000, DEBUG=True)
