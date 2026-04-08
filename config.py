@@ -70,4 +70,4 @@ def ret(data, top_level=True):
             if isinstance(item, (list, tuple)) or isinstance(next_item, (list, tuple)):
                 lines.append("")
 
-    return "\n".join(lines)
+    return f'<pre>"\n".join(lines)<\pre>'
