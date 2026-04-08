@@ -27,7 +27,7 @@ def schema():
     x, conn = connect()
     ret = get_pragmas(x)
     conn.close()
-    return ret(ret)
+    return ret
 
 @app.route('/api/countries')
 def countries():
@@ -36,7 +36,7 @@ def countries():
     rows = x.fetchall()
     ret = [row[0] for row in rows]
     conn.close()
-    return ret(ret)
+    return ret
 
 @app.route('/api/<country>/locations')
 def locations(country):
@@ -45,7 +45,7 @@ def locations(country):
     rows = x.fetchall()
     ret = [row[0] for row in rows]
     conn.close()
-    return ret(ret)
+    return ret
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug = False)
