@@ -15,8 +15,10 @@ PORT = 5000
 DEBUG = True
 APP = 'weather-api'
 
-conn = sql.connect(DB_PATH)
-x = conn.cursor()
+def connect():
+    conn = sql.connect(DB_PATH)
+    x = conn.cursor()
+    return x, conn
     
 def get_tables():
     x.execute(f'SELECT name FROM sqlite_master WHERE type=\'table\' AND name NOT LIKE \'sqlite_%\'')

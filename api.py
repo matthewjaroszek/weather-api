@@ -12,6 +12,7 @@ def health():
 
 @app.route('/api/countries')
 def countries():
+    x = connect()
     x.execute(f'SELECT country FROM locations limit 5')
     rows = x.fetchall()
     countries = [row[0] for row in rows]
