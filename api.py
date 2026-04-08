@@ -7,6 +7,10 @@ print(DEBUG)
 
 app = Flask('APP')
 
+@app.route('/api/argv')
+def argv():
+    return jsonify({len(sys.argv): sys.argv[0]})
+
 @app.route('/api/help')
 def help():
     return jsonify(['/api/health', '/api/countries', '/api/schema', '/api/<country>/locations', '/api/sql/cmd - use %20 for spaces and %27 for quotes'])
