@@ -2,29 +2,6 @@ from config import *
 
 app = Flask('APP')
 
-"""
-@app.route('/api/help')
-def help_api():
-    routes = []
-    for rule in app.url_map.iter_rules():
-        if str(rule) == "/api/sql/<path:cmd>": routes.append(str(rule) + " - use %20 for space and %27 for quotes")
-        else: routes.append(str(rule))
-    return routes
-
-
-@app.route('/api/help')
-def help_api():
-    routes = []
-    for rule in app.url_map.iter_rules():
-        rule_str = str(rule)
-        if rule_str == "/api/sql/<path:cmd>":
-            routes.append(rule_str + " - use %20 for space and %27 for quotes")
-        else:
-            routes.append(rule_str)
-    
-    # NEW: Return as plain text with newlines
-    return "\n".join(routes)
-"""
 @app.route('/api/help')
 def help_api():
     routes = []
