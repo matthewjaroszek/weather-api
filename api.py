@@ -4,10 +4,10 @@ app = Flask('APP')
 
 @app.route('/api/help')
 def help_api():
-    routes = ''
+    routes = []
     for rule in app.url_map.iter_rules():
-        if str(rule) == "/api/sql/<path:cmd>": routes += str(rule) + " - use %20 for space and %27 for quotes" + "\n"
-        else: routes += str(rule) + "\n"
+        if str(rule) == "/api/sql/<path:cmd>": routes.append(str(rule) + " - use %20 for space and %27 for quotes")
+        else: routes.append(str(rule))
     return routes
 
 
