@@ -19,10 +19,15 @@ def countries():
     x.close()
     return jsonify(countries)
 
-@app.route('/api/locations/<country>')
+@app.route('/api/<country>/locations')
 def locations(country):
+    print(country)
     x, conn = connect()
     x.execute(f'SELECT location_name FROM locations where country = {country}')
+    rows = x.fetchall()
+    locations = [row[0] for row in rows]
+    conn.close()
+    return jsonify(locations)
 
 """
 @app.route('/api/weather/<city>')
