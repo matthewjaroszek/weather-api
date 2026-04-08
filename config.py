@@ -15,12 +15,28 @@ PORT = 5000
 DEBUG = True
 APP = 'weather-api'
 
-print(DB_PATH)
 conn = sql.connect(DB_PATH)
 x = conn.cursor()
     
 def get_tables():
     x.execute(f'SELECT name FROM sqlite_master WHERE type=\'table\' AND name NOT LIKE \'sqlite_%\'')
+
+def get_pragma(x, table):
+    x.execute(f'PRAGMA table_info({table})')
+
+def get_pragmas(x):
+    ret = []
+    get_tables()
+    for table in x.fetchall():
+        r1 = []
+        table = table[0]
+        r1.append(f'{table}')
+        get_pragma(x, table)
+        z = x.fetchall()
+        for col in z:
+            r1.append(col[1])
+        ret.append(r1)
+    return ret
 
 
 

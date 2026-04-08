@@ -2,6 +2,10 @@ from config import *
 
 app = Flask('APP')
 
+@app.route('/help')
+def help():
+    return jsonify({"/api/health"})
+
 @app.route('/api/health')
 def health():
     return jsonify({"status": "ok"})

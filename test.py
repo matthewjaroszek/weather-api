@@ -1,4 +1,4 @@
 from config import *
 
-get_tables()
-print(x.fetchall())
+for rows in get_pragmas(x):
+    print(rows)
