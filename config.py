@@ -20,7 +20,7 @@ def connect():
     x = conn.cursor()
     return x, conn
     
-def get_tables():
+def get_tables(x):
     x.execute(f'SELECT name FROM sqlite_master WHERE type=\'table\' AND name NOT LIKE \'sqlite_%\'')
 
 def get_pragma(x, table):
