@@ -10,8 +10,9 @@ def help():
 def execute(cmd):
     x, conn = connect()
     x.execute(cmd)
+    ret = x.fetchall()
     conn.close()
-    return jsonify(x.fetchall())
+    return jsonify(ret)
 
 @app.route('/api/health')
 def health():
