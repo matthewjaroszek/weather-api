@@ -10,6 +10,7 @@ def help():
 def execute(cmd):
     x, conn = connect()
     x.execute(cmd)
+    conn.close()
     return jsonify(x.fetchall())
 
 @app.route('/api/health')
@@ -19,6 +20,7 @@ def health():
 @app.route('/api/schema')
 def schema():
     x, conn = connect()
+    conn.close()
     return jsonify(get_pragmas(x))
 
 @app.route('/api/countries')
@@ -27,7 +29,7 @@ def countries():
     x.execute(f'SELECT country FROM locations')
     rows = x.fetchall()
     countries = [row[0] for row in rows]
-    x.close()
+    conn.close()
     return jsonify(countries)
 
 @app.route('/api/<country>/locations')
