@@ -42,7 +42,9 @@ def get_pragmas(x):
         ret.append(r1)
     return ret
 
-def ret(data, top_level=True):
+def ret(data, top_level=True, bool=True):
+    if bool:
+        return f"<pre>{ret(data, True, False)}</pre>"
     if isinstance(data, str):
         return data
 
@@ -70,4 +72,4 @@ def ret(data, top_level=True):
             if isinstance(item, (list, tuple)) or isinstance(next_item, (list, tuple)):
                 lines.append("")
 
-    return f'<pre>"\n".join(lines)<\pre>'
+    return "\n".join(lines)
