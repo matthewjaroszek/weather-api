@@ -19,7 +19,7 @@ def countries():
     x.close()
     return jsonify(countries)
 
-@app.route('/api/<country>/locations')
+@app.route('/api/locations/<country>')
 def locations(country):
     x, conn = connect()
     x.execute(f'SELECT location_name FROM locations where country = {country}')
