@@ -3,8 +3,6 @@ import sqlite3 as sql
 from flask import Flask, jsonify, request
 from pathlib import Path
 from dotenv import load_dotenv
-import sys, argparse
-
 load_dotenv()
 
 BASE_DIR = os.getenv("BASE_DIR")
@@ -39,8 +37,3 @@ def get_pragmas(x):
             r1.append(col[1])
         ret.append(r1)
     return ret
-
-
-
-
-

@@ -2,13 +2,12 @@ from config import *
 
 app = Flask('APP')
 
-@app.route('/api/argv')
-def argv():
-    return jsonify({len(sys.argv): sys.argv[1]})
-
 @app.route('/api/help')
-def help():
-    return jsonify(['/api/health', '/api/countries', '/api/schema', '/api/<country>/locations', '/api/sql/cmd - use %20 for spaces and %27 for quotes'])
+def help_api():
+    routes = []
+    for rule in app.url_map.iter_rules():
+        routes.append(str(rule))
+    return jsonify(routes)
 
 @app.route('/api/sql/<path:cmd>')
 def execute(cmd):
@@ -48,6 +47,4 @@ def locations(country):
     return jsonify(locations)
 
 if __name__ == '__main__':
-    if len(sys.argv) >= 2 and (int)(sys.argv[1]) == 1: actual = True
-    else: actual = False
-    app.run(host='0.0.0.0', port=5000, debug = not actual)
+    app.run(host='0.0.0.0', port=5000, debug = False)
