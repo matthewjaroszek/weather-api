@@ -35,7 +35,7 @@ def countries():
     x.execute(f'SELECT country FROM locations order by country')
     ret = x.fetchall()
     conn.close()
-    return ret
+    return ret(ret)
 
 @app.route('/api/<country>/locations')
 def locations(country):
@@ -43,7 +43,7 @@ def locations(country):
     x.execute(f'SELECT location_name FROM locations WHERE country = "{country}"')
     ret = x.fetchall()
     conn.close()
-    return ret
+    return ret(ret)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug = False)
+    app.run(host='0.0.0.0', port=5000, debug = True)
