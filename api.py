@@ -4,16 +4,16 @@ app = Flask('APP')
 
 @app.route('/api/help')
 def help():
-    return jsonify({"cmds ": "/api/health"})
+    return jsonify(['/api/health', '/api/countries'])
 
 @app.route('/api/health')
 def health():
     return jsonify({"status": "ok"})
 
-@app.route('/api/locations/<country>')
-def get_location(country):
-    x.execute(f'SELECT locattion_name FROM locations WHERE country = {country}')
-    return jsonify({country: x.fetchone()})
+@app.route('/api/countries')
+def countries():
+    x.execute(f'SELECT country FROM locations limit 5')
+    return jsonify(x.fetchall())
 
 """
 @app.route('/api/weather/<city>')
