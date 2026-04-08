@@ -50,4 +50,5 @@ def locations(country):
 if __name__ == '__main__':
     if len(sys.argv) >= 2 and (int)(sys.argv[1]) == 1: debug = False
     else: debug = True
+    print(debug)
     app.run(host='0.0.0.0', port=5000, debug=True)
