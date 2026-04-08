@@ -44,7 +44,8 @@ def get_pragmas(x):
 
 def ret(data, top_level=True, bool=True):
     if bool:
-        return f"<pre>{ret(data, True, False)}</pre>"
+        return f"<pre>{ret(data, top_level, False)}</pre>"
+    
     if isinstance(data, str):
         return data
 
@@ -54,16 +55,14 @@ def ret(data, top_level=True, bool=True):
     lines = []
 
     for i, item in enumerate(data):
-        # treat [x] like x
         if isinstance(item, (list, tuple)) and len(item) == 1:
             item = item[0]
 
         if isinstance(item, (list, tuple)):
-            lines.append(ret(item, top_level=False, bool=False))
+            lines.append(ret(item, top_level, bool=False))
         else:
             lines.append(str(item))
 
-        # blank line only between top-level true nested lists
         if top_level and i < len(data) - 1:
             next_item = data[i + 1]
             if isinstance(next_item, (list, tuple)) and len(next_item) == 1:
