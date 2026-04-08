@@ -35,7 +35,8 @@ def help_api():
         else:
             routes.append(rule_str)
     
-    return ret(routes)
+    return "\n".join(routes), 200, {'Content-Type': 'text/plain'}
+    #return ret(routes)
 
 
 @app.route('/api/sql/<path:cmd>')
