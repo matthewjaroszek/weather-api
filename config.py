@@ -59,7 +59,7 @@ def ret(data, top_level=True, bool=True):
             item = item[0]
 
         if isinstance(item, (list, tuple)):
-            lines.append(ret(item, top_level=False))
+            lines.append(ret(item, top_level=False, bool=False))
         else:
             lines.append(str(item))
 
