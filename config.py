@@ -34,7 +34,7 @@ def get_pragmas(x):
     for table in x.fetchall():
         r1 = []
         table = table[0]
-        r1.append(f'Table Name: {table}')
+        r1.append(f'{table}')
         get_pragma(x, table)
         z = x.fetchall()
         for col in z:
@@ -72,7 +72,4 @@ def ret(data, top_level=True, pre_wrap=True):
             if isinstance(item, (list, tuple)) or isinstance(next_item, (list, tuple)):
                 lines.append("")
 
-    if top_level and all(not isinstance(x, (list, tuple)) for x in data):
-        return ", ".join(lines)
-    else:
-        return "\n".join(lines)
+    return ", ".join(lines)
