@@ -2,9 +2,9 @@ from config import *
 
 app = Flask('APP')
 
-@app.route('/help')
+@app.route('/api/help')
 def help():
-    return jsonify({"/api/health"})
+    return jsonify({"comds ": "/api/health"})
 
 @app.route('/api/health')
 def health():
