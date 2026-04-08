@@ -16,7 +16,7 @@ def execute(cmd):
     x.execute(cmd)
     ret = x.fetchall()
     conn.close()
-    return ret
+    return ret(ret)
 
 @app.route('/api/health')
 def health():
@@ -27,7 +27,7 @@ def schema():
     x, conn = connect()
     ret = get_pragmas(x)
     conn.close()
-    return ret
+    return ret(ret)
 
 @app.route('/api/countries')
 def countries():

@@ -41,3 +41,25 @@ def get_pragmas(x):
             r1.append(col[1])
         ret.append(r1)
     return ret
+
+def ret(data, indent=""):
+    """Recursively format nested lists with newlines and blank spacing"""
+    if isinstance(data, str):
+        return data
+    
+    if not isinstance(data, (list, tuple)):
+        return str(data)
+    
+    lines = []
+    for i, item in enumerate(data):
+        if isinstance(item, (list, tuple)):
+            # Recurse into sublists
+            lines.append(ret(item, indent + "  "))
+        else:
+            lines.append(f"{indent}{item}")
+        
+        # Blank line between items (except last)
+        if i < len(data) - 1:
+            lines.append("")
+    
+    return "\n".join(lines)
