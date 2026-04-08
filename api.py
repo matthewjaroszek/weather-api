@@ -40,7 +40,7 @@ def countries():
 @app.route('/api/<country>/locations')
 def locations(country):
     x, conn = connect()
-    x.execute(f'SELECT location_name FROM locations WHERE country = "{countries}"')
+    x.execute(f'SELECT location_name FROM locations WHERE country = "{country}"')
     ret = x.fetchall()
     conn.close()
     return ret
