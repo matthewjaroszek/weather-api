@@ -36,7 +36,7 @@ def countries():
     x.execute(f'SELECT country, location_name, timezone FROM locations order by country')#
     query = x.fetchall()
     conn.close()
-    return ret('Country, Location Name, Time Zone' + query)
+    return ret(['Country, Location Name, Time Zone'] + query)
 
 @app.route('/api/<country>/locations')
 def locations(country):
