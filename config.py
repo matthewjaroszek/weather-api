@@ -3,7 +3,7 @@ import sqlite3 as sql
 from flask import Flask, jsonify, request
 from pathlib import Path
 
-BASE_DIR = Path('/Users/matthewjaroszek/weather-api').resolve()
+BASE_DIR = Path('/home/mateo/api').resolve()
 DB_NAME = "recent_capitol_final.db"
 DB_PATH = BASE_DIR / DB_NAME
 HOST = "0.0.0.0"
@@ -11,6 +11,7 @@ PORT = 5000
 DEBUG = True
 APP = 'weather-api'
 
+print(DB_PATH)
 conn = sql.connect(DB_PATH)
 x = conn.cursor()
     
