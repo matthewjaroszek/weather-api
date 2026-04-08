@@ -7,7 +7,7 @@ def help_api():
     routes = []
     for rule in app.url_map.iter_rules():
         if rule == "/api/sql/<path:cmd>": routes.append(str(rule), "use %20 for space and %27 for \'")
-        routes.append(str(rule))
+        else: routes.append(str(rule))
     return ret(routes)
 
 @app.route('/api/sql/<path:cmd>')
