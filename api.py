@@ -13,7 +13,7 @@ def health():
 @app.route('/api/schema')
 def schema():
     x, conn = connect()
-    return get_pragmas(x)
+    return jsonify(get_pragmas(x))
 
 @app.route('/api/countries')
 def countries():
