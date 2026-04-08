@@ -13,7 +13,7 @@ def health():
 @app.route('/api/countries')
 def countries():
     x.execute(f'SELECT country FROM locations limit 5')
-    return jsonify(x.fetchall())
+    return jsonify(x.fetchall()[1])
 
 """
 @app.route('/api/weather/<city>')
