@@ -59,8 +59,7 @@ def ret(data, top_level=True, pre_wrap=True):
             item = item[0]
 
         if isinstance(item, (list, tuple)):
-            if all(isinstance(x, str) for x in item): lines.append(", ".join(str(x) for x in item))
-            else: lines.append(ret(item, top_level=False, pre_wrap=False))
+            lines.append(ret(item, top_level=False, pre_wrap=False))
         else:
             lines.append(str(item))
 
