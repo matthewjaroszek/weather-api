@@ -20,8 +20,9 @@ def health():
 @app.route('/api/schema')
 def schema():
     x, conn = connect()
+    ret = get_pragmas(x)
     conn.close()
-    return jsonify(get_pragmas(x))
+    return jsonify(ret)
 
 @app.route('/api/countries')
 def countries():
