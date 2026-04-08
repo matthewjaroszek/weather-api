@@ -42,7 +42,7 @@ def countries():
 def locations(country):
     x, conn = connect()
     x.execute(f'SELECT location_name FROM locations WHERE country = "{countries}"')
-    rows = x.fetchall()
+    ret = x.fetchall()
     ret = [row[0] for row in rows]
     conn.close()
     return ret
