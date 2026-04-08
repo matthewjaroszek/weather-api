@@ -8,15 +8,15 @@ def help_api():
     for rule in app.url_map.iter_rules():
         if str(rule) == "/api/sql/<path:cmd>": routes.append(str(rule) + " - use %20 for space and %27 for quotes")
         else: routes.append(str(rule))
-    return routes
+    return ret(routes)
 
 @app.route('/api/sql/<path:cmd>')
 def execute(cmd):
     x, conn = connect()
     x.execute(cmd)
-    ret = x.fetchall()
+    query = x.fetchall()
     conn.close()
-    return ret(ret)
+    return ret(query)
 
 @app.route('/api/health')
 def health():
@@ -25,25 +25,25 @@ def health():
 @app.route('/api/schema')
 def schema():
     x, conn = connect()
-    ret = get_pragmas(x)
+    query = get_pragmas(x)
     conn.close()
-    return ret(ret)
+    return ret(query)
 
 @app.route('/api/countries')
 def countries():
     x, conn = connect()
     x.execute(f'SELECT country FROM locations order by country')
-    ret = x.fetchall()
+    query = x.fetchall()
     conn.close()
-    return ret(ret)
+    return ret(query)
 
 @app.route('/api/<country>/locations')
 def locations(country):
     x, conn = connect()
     x.execute(f'SELECT location_name FROM locations WHERE country = "{country}"')
-    ret = x.fetchall()
+    query = x.fetchall()
     conn.close()
-    return ret(ret)
+    return ret(query)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug = True)
