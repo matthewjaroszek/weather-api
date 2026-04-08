@@ -8,24 +8,18 @@ def health():
 
 @app.route('/api/weather/<city>')
 def get_weather(city):
-    conn = sql.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM rc WHERE city = ? LIMIT 1", (city,))
-    row = cursor.fetchone()
-    conn.close()
+    x.execute("SELECT * FROM rc WHERE city = ? LIMIT 1", (city,))
+    row = x.fetchone()
     
     if row:
-        return jsonify(dict(zip([desc[0] for desc in cursor.description], row)))
+        return jsonify(dict(zip([desc[0] for desc in x.description], row)))
     return jsonify({"error": "City not found"}), 404
 
 @app.route('/api/weather')
 def get_all_weather():
-    conn = sql.connect(DB_PATH)
-    cursor = conn.cursor()
-    cursor.execute("SELECT country, city, condition, lat, lon FROM rc LIMIT 20")
-    rows = cursor.fetchall()
-    conn.close()
-    return jsonify([dict(zip([desc[0] for desc in cursor.description], row)) for row in rows])
+    x.execute("SELECT country, city, condition, lat, lon FROM rc LIMIT 20")
+    rows = x.fetchall()
+    return jsonify([dict(zip([desc[0] for desc in x.description], row)) for row in rows])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
