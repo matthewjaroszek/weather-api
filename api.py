@@ -48,6 +48,6 @@ def locations(country):
     return jsonify(locations)
 
 if __name__ == '__main__':
-    if len(sys.argv) >= 2 and (int)(sys.argv[1]) == 1: DEBUG = False
-    else: DEBUG = True
-    app.run(host='0.0.0.0', port=5000, DEBUG=True)
+    if len(sys.argv) >= 2 and (int)(sys.argv[1]) == 1: debug = False
+    else: debug = True
+    app.run(host='0.0.0.0', port=5000, debug=True)
