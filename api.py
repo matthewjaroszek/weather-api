@@ -11,7 +11,7 @@ def health():
     return jsonify({"status": "ok"})
 
 @app.route('/api/locations/<country>')
-def health(country):
+def get_location(country):
     x.execute(f'SELECT locattion_name FROM locations WHERE country = {country}')
     return jsonify({country: x.fetchone()})
 
