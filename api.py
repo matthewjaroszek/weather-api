@@ -17,7 +17,7 @@ def get_weather(city):
     
     if row:
         return jsonify(dict(zip([desc[0] for desc in x.description], row)))
-    return jsonify({"error": "City not found"}), 404
+    return jsonify({"error": "Cit not found"}), 404
 
 @app.route('/api/weather')
 def get_all_weather():
