@@ -13,7 +13,9 @@ def health():
 @app.route('/api/countries')
 def countries():
     x.execute(f'SELECT country FROM locations limit 5')
-    return jsonify(x.fetchall()[1])
+    rows = x.fetchall()
+    countries = [row[0] for row in rows]
+    return jsonify(countries)
 
 """
 @app.route('/api/weather/<city>')
