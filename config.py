@@ -3,6 +3,7 @@ import sqlite3 as sql
 from flask import Flask, jsonify, request
 from pathlib import Path
 from dotenv import load_dotenv
+
 load_dotenv()
 
 BASE_DIR = os.getenv("DB_NAME")
