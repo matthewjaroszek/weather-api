@@ -8,7 +8,7 @@ def help_api():
     for rule in app.url_map.iter_rules():
         if str(rule) == "/api/sql/<path:cmd>": routes.append(str(rule) + " - use %20 for space and %27 for quotes")
         else: routes.append(str(rule))
-    return routes
+    return ("\n").join(routes)
 
 
 @app.route('/api/sql/<path:cmd>')
