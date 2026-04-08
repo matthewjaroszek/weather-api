@@ -10,6 +10,7 @@ def help_api():
         else: routes.append(str(rule))
     return ret(routes)
 
+"""
 @app.route('/api/sql/<path:cmd>')
 def execute(cmd):
     x, conn = connect()
@@ -17,6 +18,7 @@ def execute(cmd):
     query = x.fetchall()
     conn.close()
     return ret(query)
+"""
 
 @app.route('/api/sql')
 def execute():
