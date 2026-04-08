@@ -3,8 +3,10 @@ import sqlite3 as sql
 from flask import Flask, jsonify, request
 from pathlib import Path
 from dotenv import load_dotenv
+import sys, argparse
 
 load_dotenv()
+
 
 BASE_DIR = os.getenv("BASE_DIR")
 BASE_DIR = Path(BASE_DIR).resolve()
@@ -12,7 +14,6 @@ DB_NAME = "recent_capitol_final.db"
 DB_PATH = BASE_DIR / DB_NAME
 HOST = "0.0.0.0"
 PORT = 5000
-DEBUG = True
 APP = 'weather-api'
 
 def connect():
