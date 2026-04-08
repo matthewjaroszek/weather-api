@@ -6,7 +6,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_DIR = os.getenv("DB_NAME")
+BASE_DIR = os.getenv("BASE_DIR")
+BASE_DIR = Path(BASE_DIR).resolve()
 DB_NAME = "recent_capitol_final.db"
 DB_PATH = BASE_DIR / DB_NAME
 HOST = "0.0.0.0"
